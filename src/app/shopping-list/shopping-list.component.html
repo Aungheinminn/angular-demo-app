@@ -1,0 +1,21 @@
+<div class="shop-cart">
+    <div class="shop-div-photo">
+        <img class="shop-photo" src={{shopping.photo}} alt="">
+    </div>
+    <div class="shop-content">
+        <h3 class="shop-name">{{shopping.name}}</h3>
+        <p class="shop-price">{{shopping.price}}</p>
+    </div>
+    <button [hidden]="countService.counts[shopping.id].value > 0" id="button{{shopping.id}}" class="shop-btn" (click)="onClick(shopping.id)" >Add to Cart</button>
+    <div *ngIf="clickedButtonId === shopping.id && countService.counts[shopping.id].value !== 0"   class="shop-appear-count" id={{shopping.id}}>
+        <div class="appear-div">
+            <button (click)="onCountDec(shopping.id)" class="dec-btn">-</button>
+            <span class="count">{{countService.counts[shopping.id].value}}</span>
+            <button (click)="onCountInc(shopping.id)" class="inc-btn">+</button> 
+        </div>
+        <div class="div-rem">
+            <button (click)="onResetCount(shopping.id)" class="btn-rem">Remove</button>
+        </div>
+
+    </div>
+</div>
